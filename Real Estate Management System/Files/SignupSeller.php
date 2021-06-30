@@ -52,38 +52,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else
 	{
-		$first_name = $_POST["name"];
+		$name = $_POST["name"];
 	}
 	
-		if(!$hasError)
+	if(empty($_POST["username"]))
 	{
-	echo $_POST["name"]."<br>";
-	}
-    if(empty($_POST["username"]))
-   {
 	  $hasError=true; 
 	  $err_username="*user name required";
-   }
-   elseif(strlen($_POST["username"])<6)
-   {
+	}
+	elseif(strlen($_POST["username"])<6)
+	{
 	  $hasError=true;  
 	  $err_username="*User name Must be at least 6 characters";
-   }
-   else
-   {
+	}
+	else
+	{
 	 $username=$_POST["username"];  
 	 
-   }
+	}
 		if(empty($_POST["id"]))
-   {
+	{
 	  $hasError=true; 
 	  $err_id="ID required";
-   }
+	}
     elseif(is_numeric($_POST["id"])==false){
                 $err_id="*Please enter digit";
             }
-   else
-   {
+	else
+	{
 	 $id=$_POST["id"];  
    }
 	if(empty($_POST["password"]))
@@ -314,22 +310,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
    } 
 
 
-
- 
-   
-   
-
-
-
-
-	
-	
-	
-	
-
-
-	if(!$hasError)
-	{
 	echo $_POST["name"]."<br>";
 	echo $_POST["username"]."<br>";
     echo $_POST["id"]."<br>";
@@ -348,9 +328,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	echo $_POST["month"]."<br>";
 	echo $_POST["year"]."<br>";
 	echo $_POST["profession"]."<br>";
-	
-	}
-
 	
 }
 

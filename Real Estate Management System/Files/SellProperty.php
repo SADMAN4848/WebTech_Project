@@ -125,9 +125,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 <html>
-	<body>
+	<body style="background-color:silver;">
+	<fieldset>
+		<legend><h1>Sell Property</h1></legend>
 		<form action="" method="post">
-		<h1>Sell Property</h1>
 			<table>
 			
 				<tr>

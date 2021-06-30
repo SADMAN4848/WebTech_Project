@@ -29,6 +29,7 @@
 	$err_month="";
 	$year="";
 	$err_year="";
+	$months = array("January","February","March","April","May","June","July","August","September","October","November","December");
 	$hasError=false;
 	
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,9 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$hasError=true;
 		$err_username="*Username Required";
 	}
-	else if(strlen($_POST["username"])<6){
+	else if(strlen($_POST["username"])<10){
 		$hasError=true;
-		$err_username="*Username length less than 6";
+		$err_username="*Username length less than 10";
 	}
 	else{
 		$username=$_POST["username"];
@@ -63,15 +64,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	else if(is_numeric($_POST["password"])<1){
 		$hasError=true;
 		$err_password="*Password should contain at least 1 number";
-	}
-	
-	else if(!strpos($_POST,$char["password"])){
-		$hasError=true;
-		$err_password="*Shouldn't contain special character";
-	}
-	else if(!strpos($_POST,$char2["password"])){
-		$hasError=true;
-		$err_password="*Shouldn't contain special character";
 	}
 	
 	else{
@@ -317,7 +309,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				<tr>
                 <td align="right">Birth Date</td>
 						<td>:
-							<select name="day"    >
+							<select name="day" >
 								<option>Day</option>
 								
 								<?php
@@ -326,19 +318,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 									}
 								?>
 							</select><span style="color:red"><?php echo $err_day; ?></span>
-							<select name="month"  >
+							<select name="month">
 								<option>Month</option>
 								
 								<?php
-								    $month = array("January","February","March","April","May","June","July","August","September","October","November","December");
-									foreach($month as $v){
-										echo "<option>$v</option>";
-										
-									}
-								?>
+								foreach($months as $m){
+									if($m == $month)
+										echo "<option selected>$m</option>";
+									else
+										echo "<option>$m</option>";
+								}
+							?>
 							</select>
 							<span style="color:red"><?php echo $err_month; ?></span>
-                            <select name="year"  >
+							
+                            <select name="year">
 								<option>Year</option>
 								
 								<?php

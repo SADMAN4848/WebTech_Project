@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         }
 		 if(empty($_POST["username"])){
             $hasError = true;
-            $err_username = "*Userame Required";
+            $err_username = "*Username Required";
         }
         else if(strlen($_POST["username"]) < 12){
             $hasError = true;
